@@ -1,0 +1,1985 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Alba Digital API",
+        "description": "An API of ecommerce",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/categories/all": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "all categories",
+                "description": "list of all categories",
+                "operationId": "allCategories",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "category 1"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Paginated category list",
+                "description": "Paginated list of categories",
+                "operationId": "categoryList",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "category 1"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/category": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create Category",
+                "description": "Create a category record",
+                "operationId": "categoryCreate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "category 1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/category/{category}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "View a category",
+                "description": "View a category",
+                "operationId": "categoryShow",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Category not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Delete Category",
+                "description": "Delete a category record",
+                "operationId": "categoryDelete",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "ID of category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "category 1"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Category not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update Category",
+                "description": "Update a category record",
+                "operationId": "categoryUpdate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 1,
+                                    "name": "category 1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Category not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/orders": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Paginated transaction list",
+                "description": "Paginated list of transactions",
+                "operationId": "originList",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "total": {
+                                                        "type": "string",
+                                                        "example": "70000"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "unpaid",
+                                                            "paid"
+                                                        ],
+                                                        "example": "paid"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "items": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "product 1"
+                                                                },
+                                                                "price": {
+                                                                    "type": "string",
+                                                                    "example": "10000"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "example": "2023-08-28 06:06:17"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "example": "2023-08-28 06:06:17"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/unpaid": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Unpaid transaction",
+                "description": "view a unpaid invoice",
+                "operationId": "orderShow",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "70000"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "unpaid",
+                                                        "paid"
+                                                    ],
+                                                    "example": "unpaid"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "price": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "product 1",
+                                                            "price": "10000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Checkout payment",
+                "description": "Checkout payment of a unpaid invoice",
+                "operationId": "orderCheckout",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "30000"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "unpaid",
+                                                        "paid"
+                                                    ],
+                                                    "example": "paid"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "price": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "product 1",
+                                                            "price": "10000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "name": "product 2",
+                                                            "price": "20000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/product/{product}/order": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Add a shopping item",
+                "description": "Add a shopping item to buy",
+                "operationId": "orderCreate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Product 1",
+                                    "price": "10000"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "unpaid",
+                                                        "paid"
+                                                    ],
+                                                    "example": "unpaid"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "price": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "product 1",
+                                                            "price": "10000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/item/{order_item}": {
+            "delete": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Remove a shopping item",
+                "description": "Remove a shopping item from cart",
+                "operationId": "orderRemove",
+                "parameters": [
+                    {
+                        "name": "order_item",
+                        "in": "path",
+                        "description": "ID of order item",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "unpaid",
+                                                        "paid"
+                                                    ],
+                                                    "example": "unpaid"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "price": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "product 1",
+                                                            "price": "10000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Item not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/{order}": {
+            "delete": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Delete invoice",
+                "description": "Delete a invoice",
+                "operationId": "orderDelete",
+                "parameters": [
+                    {
+                        "name": "order",
+                        "in": "path",
+                        "description": "ID of invoice",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "total": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "unpaid",
+                                                        "paid"
+                                                    ],
+                                                    "example": "unpaid"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "price": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "product 1",
+                                                            "price": "10000",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Paginated Product list",
+                "description": "Paginated list of products",
+                "operationId": "productList",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "product 1"
+                                                    },
+                                                    "price": {
+                                                        "type": "string",
+                                                        "example": "20000"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-08-28 06:06:17"
+                                                    },
+                                                    "categories": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "example": "category 1"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string",
+                                                                    "example": "2023-08-28 06:06:17"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string",
+                                                                    "example": "2023-08-28 06:06:17"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/product": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Create Product",
+                "description": "Create a product record",
+                "operationId": "productCreate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "string"
+                                            },
+                                            "categories": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Product 1",
+                                    "price": "10000",
+                                    "categories": [
+                                        {
+                                            "id": 1
+                                        },
+                                        {
+                                            "id": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "price": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "category 1",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "name": "category 2",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/product/{product}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "View product",
+                "description": "Show information of a product",
+                "operationId": "productShow",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "ID of product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "price": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "category 1",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "name": "category 2",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete Product",
+                "description": "Delete a product record",
+                "operationId": "productDelete",
+                "parameters": [
+                    {
+                        "name": "product",
+                        "in": "path",
+                        "description": "ID of product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "price": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "category 1",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "name": "category 2",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data Not Found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update Product",
+                "description": "Update a product record",
+                "operationId": "productUpdate",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "number"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "string"
+                                            },
+                                            "categories": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "id": 1,
+                                    "name": "Product 1",
+                                    "price": "10000",
+                                    "categories": [
+                                        {
+                                            "id": 1
+                                        },
+                                        {
+                                            "id": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Product 1"
+                                                },
+                                                "price": {
+                                                    "type": "string",
+                                                    "example": "10000"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "example": [
+                                                        {
+                                                            "id": 1,
+                                                            "name": "category 1",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        },
+                                                        {
+                                                            "id": 2,
+                                                            "name": "category 2",
+                                                            "updated_at": "2023-08-28 06:06:17",
+                                                            "created_at": "2023-08-28 06:06:17"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Invalid data provided"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Product not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Data not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "User login",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "john@gmail.com",
+                                    "password": "helloworld"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Valid credentials",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "john@test.com"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "api_token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVmNjA1NDNmMGI1MDg3MGFlNWY5ZWQ1ZTMzYWIwNzhiZTQ1NjRmYzliMmMyMjQwZjNjNDFlZWQ4ODhiZDcxMTg3NWJiM2E0NWNhY2IxMmMiLCJpYXQiOjE2OTI1NDg3MzAuODU3OTE4LCJuYmYiOjE2OTI1NDg3MzAuODU3OTIzLCJleHAiOjE3MjQxNzExMzAuNzczNTQ5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JBAMuBjIqP78z_6BzubosjNfk0O5TCR1Ro73y6wSJPODLbMyxsQWFJmqroSHVYzIHpfC9ikLIUz4ywKCrsuqyOgWzhnaQH8W-A5eqnfbp-Vrevq9QzS2cGVTGySYa_-YxP3sy8fgEfMApDKzmSDJZCy-Q61aYRYjtp3v52Nj6iAd_mvrFQ8TeVq-Vbor2yTXGZnnd7SHTJxzR4eDCmg3RvhI-4vKDGF4LGRt8Q5bQOK0tIY8bvsEpsXDVlkNlSYEu0txOFYkYjNqaxnBDV9BTF3Wki6Ui6qc5BP9EwvtGugerygdT0LDQoblWHXx9gxKBB4-Y-CN4xYa4rvTIeGWEioqPHpywINtWmNWVJ71gheva8aBIc0sxNU3i2xa6dT5JF_rEorHXsUPkyXjGQzxMUfTP9pmtKlbq1eW-AJuS23S_7p1g-CNYMvx2hMtNeDSKYCQE-RZoayCEiLJS10ldWZcF-iMgEm-ZcTG8lzjjfYdqRAMS7FyAM6f1xmAvhgnSDPW-nZnbGo5AUueT3Zz3WrvU6w4BdtiwVLdz15bEmJ3ZkT2x6GvJIqx2DQNhBO9x6o6kVrujcdtc_JDF9tkPNsu171tiV6Uk8kV_r15jyO7taSugT4uqS1ITdd4II4oAKL0JXRd4pSVsY8Fbr0p-HOdYmebLHsnUGRmMiDiZBA"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid credentials",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Incorrect username or password!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register",
+                "operationId": "0a38310f833466b1b4d00ef8d0a449b9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "John",
+                                    "email": "john@gmail.com",
+                                    "password": "helloworld"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "john@test.com"
+                                                },
+                                                "email_verified_at": {
+                                                    "type": "string",
+                                                    "example": null
+                                                },
+                                                "api_token": {
+                                                    "type": "string",
+                                                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVmNjA1NDNmMGI1MDg3MGFlNWY5ZWQ1ZTMzYWIwNzhiZTQ1NjRmYzliMmMyMjQwZjNjNDFlZWQ4ODhiZDcxMTg3NWJiM2E0NWNhY2IxMmMiLCJpYXQiOjE2OTI1NDg3MzAuODU3OTE4LCJuYmYiOjE2OTI1NDg3MzAuODU3OTIzLCJleHAiOjE3MjQxNzExMzAuNzczNTQ5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JBAMuBjIqP78z_6BzubosjNfk0O5TCR1Ro73y6wSJPODLbMyxsQWFJmqroSHVYzIHpfC9ikLIUz4ywKCrsuqyOgWzhnaQH8W-A5eqnfbp-Vrevq9QzS2cGVTGySYa_-YxP3sy8fgEfMApDKzmSDJZCy-Q61aYRYjtp3v52Nj6iAd_mvrFQ8TeVq-Vbor2yTXGZnnd7SHTJxzR4eDCmg3RvhI-4vKDGF4LGRt8Q5bQOK0tIY8bvsEpsXDVlkNlSYEu0txOFYkYjNqaxnBDV9BTF3Wki6Ui6qc5BP9EwvtGugerygdT0LDQoblWHXx9gxKBB4-Y-CN4xYa4rvTIeGWEioqPHpywINtWmNWVJ71gheva8aBIc0sxNU3i2xa6dT5JF_rEorHXsUPkyXjGQzxMUfTP9pmtKlbq1eW-AJuS23S_7p1g-CNYMvx2hMtNeDSKYCQE-RZoayCEiLJS10ldWZcF-iMgEm-ZcTG8lzjjfYdqRAMS7FyAM6f1xmAvhgnSDPW-nZnbGo5AUueT3Zz3WrvU6w4BdtiwVLdz15bEmJ3ZkT2x6GvJIqx2DQNhBO9x6o6kVrujcdtc_JDF9tkPNsu171tiV6Uk8kV_r15jyO7taSugT4uqS1ITdd4II4oAKL0JXRd4pSVsY8Fbr0p-HOdYmebLHsnUGRmMiDiZBA"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2023-08-28 06:06:17"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Username and Password did not match"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "operationId": "e549fd8544c96edfed36dd13c027de7e",
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
